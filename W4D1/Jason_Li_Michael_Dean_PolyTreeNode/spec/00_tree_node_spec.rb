@@ -145,4 +145,4 @@ describe 'Searchable' do
       expect(nodes.first.bfs('f')).to equal(nodes[5])
     end
   end
-end
+ end

@@ -53,39 +53,29 @@ class PolyTreeNode
 
     def dfs(target)
         return self if self.value == target 
-        return nil if self.children.empty?
-        mid_idx = @children.length / 2
-        left_children = @children[0...mid_idx]
-        right_children = @children[mid_idx..-1]
-
-
-        left_children.each do |child|
-            puts value
-            child.dfs(target)
+        # return nil if self.children.empty?       
+        self.children.each do |child|
+            # if !child.children.empty? 
+            # won't run code in the block when array is empty 
+                memo = child.dfs(target)                     
+                return memo if !memo.nil?
+            # end        
         end
-
-        right_children.each do |child|
-            puts value
-            child.dfs(target)
-        end
-
-
-        
-        # return nil if @children == [] 
-        # return nil if @parent.nil? 
-        # self.parent.each do |parent, children|
-        #     children.each do |child|
-        #         return child.dfs(target)
-        #     end
-        # end
+        nil       
     end
-#     should take correct path to descendant (FAILED - 15)
-#     behaves like search method
-#       should return itself if it contains the value (FAILED - 16)
-#       should find descendant (FAILED - 17)
-#       should return nil when value is not found (FAILED - 18)
-    def bfs
 
+
+    
+    def bfs(target)
+        queue = [self]
+        visited = []
+        while queue.length > 0 
+            check = queue.shift 
+            return check if check.value == target 
+            visited << check unless visited.include?(check)
+            check.children.each { |child| queue << child unless visited.include?(child) }
+            return nil if queue.empty? 
+        end
 
     end
 #     should take correct path to descendant (FAILED - 19)
