@@ -14,7 +14,7 @@ def my_min_n2(list)
   end
   small
 end
-
+# O(n)
 def my_min_n(list)
  small = list[0]
 
@@ -26,31 +26,24 @@ def my_min_n(list)
 end
 
 list2 = [5, 3, -99,6,8]
-  def  largest_contiguous_subsum(list2) # => 8
+  def largest_contiguous_subsum(list2) # => 8
     arr = []
-
+#         n^2
     (0...list2.length).each do |i|
       (i...list2.length).each do |j|
         arr << list2[i..j] 
       end
     end
-# ^^^^^^^^^^^^^^^^^n!
 
     large = arr.shift
-    arr.each do |ele| #what happens here? n* n!
+    arr.each do |ele| #what happens here? 
     large = ele if ele.sum > large.sum #nested loops
     end
     large.sum
   end
 
-    # possible sub-sums
-    [5]           # => 5
-    [5, 3]        # => 8 --> we want this one
-    [5, 3, -99,6,8]    # => 1
-    [3]           # => 3
-    [3, -7]       # => -4
-    [-7]          # => -7
-
+list2 = [5, 3, -99, 6, 8] # => 14
+# O(n) solution
 def largest_contiguous_subsum_n(list2)
   large = 0
   
@@ -67,26 +60,7 @@ def largest_contiguous_subsum_n(list2)
  large
 end
 
-# def largest_contiguous_subsum_n(list2)
-#   largest = 0
-#   current_sum = 0
-#   list2.each do |ele|
-
-#     if ele >= 0        
-#       current_sum += ele
-#       if largest < current_sum 
-#         largest = current_sum
-#       end
-#     else
-#       current_sum = 0
-#     end
-#   end
-
-#   largest
-# end
-
-
-p "#{my_min_n2(list)} O(n^2)"
-p "#{my_min_n(list)} O(n)"
-p "#{largest_contiguous_subsum(list2)} O(n!..?)"
-p "#{largest_contiguous_subsum_n(list2)} O(n)"
+p "#{my_min_n2(list)} my_min_n2 O(n^2)"
+p "#{my_min_n(list)} my_min_n O(n)"
+p "#{largest_contiguous_subsum(list2)} largest_contiguous_subsum_n O(n^3)"
+p "#{largest_contiguous_subsum_n(list2)} largest_contiguous_subsum_n O(n)"
