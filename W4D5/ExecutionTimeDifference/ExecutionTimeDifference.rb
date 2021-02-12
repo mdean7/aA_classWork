@@ -46,10 +46,22 @@ list2 = [5, 3, -7]
     # possible sub-sums
     [5]           # => 5
     [5, 3]        # => 8 --> we want this one
-    [5, 3, -7]    # => 1
+    [5, 3, -99,6,8]    # => 1
     [3]           # => 3
     [3, -7]       # => -4
     [-7]          # => -7
+
+def largest_contiguous_subsum_n(list2)
+  large = 0
+  current_sum = 0
+  i = 0
+  j = 0
+ 
+
+    end
+  end
+end
+
 
 
 
