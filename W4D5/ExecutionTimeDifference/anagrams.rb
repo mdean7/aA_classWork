@@ -6,7 +6,7 @@ def first_anagram?(str1,str2)
   arr = str1.chars.permutation.to_a
   arr.include?(str2.chars)
 end
-# mike  (n + n! + n) + n = n!....?
+# mike  (n + n! + n!) n! + n = n!....?
 # alex n!
 
 def second_anagram?(str1, str2)
