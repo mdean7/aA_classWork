@@ -96,9 +96,12 @@ class ResizingIntSet
   end
 
   def resize!
-    arr = []
     if count > @store.size
-      @store.flatten.each{|item| arr << item}
+      arr = @store.flatten.dup
+      self.each { |ele| remove(ele)} 
+      count.times { @store << Array.new } 
+      arr.each { |ele| @store.insert(ele) }
     end
+    @store
   end
 end
