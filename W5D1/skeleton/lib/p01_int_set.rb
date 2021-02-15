@@ -67,12 +67,22 @@ class ResizingIntSet
   end
 
   def insert(num)
+    unless include?(num)
+      @store[num % num_buckets] << num
+      @count += 1
+    end
+
   end
 
   def remove(num)
+    if include?(num)
+      @store[num % num_buckets].delete(num)
+      @count -= 1
+    end
   end
 
   def include?(num)
+    @store[num % num_buckets].include?(num)
   end
 
   private
@@ -86,5 +96,9 @@ class ResizingIntSet
   end
 
   def resize!
+    arr = []
+    if count > @store.size
+      @store.flatten.each{|item| arr << item}
+    end
   end
 end
