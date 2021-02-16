@@ -104,8 +104,9 @@ class ResizingIntSet
       counter.times { @store << Array.new }       
       arr.each { |ele| insert(ele) }
     end
-    @store
+      @store
   end
+
 end
 # p num1 = ResizingIntSet.new
 # 39.times {num1.insert(rand(1..100))}
