@@ -71,7 +71,9 @@ class ResizingIntSet
       @store[num % num_buckets] << num
       @count += 1
     end
-
+     if count >= num_buckets
+      resize!
+     end
   end
 
   def remove(num)
@@ -85,7 +87,7 @@ class ResizingIntSet
     @store[num % num_buckets].include?(num)
   end
 
-  # private
+  private
 
   def [](num)
     # optional but useful; return the bucket corresponding to `num`
@@ -96,15 +98,11 @@ class ResizingIntSet
   end
 
   def resize!
-    
-    counter = (num_buckets * 2)
-    if count > @store.size
-      arr = @store.flatten.dup
-      @store.flatten.each { |ele| remove(ele) } 
-      counter.times { @store << Array.new }       
-      arr.each { |ele| insert(ele) }
-    end
-      @store
+    arr = @store.flatten.dup
+    @store.flatten.each { |ele| remove(ele) } 
+    num_buckets.times { @store << Array.new }       
+    arr.each { |ele| insert(ele) }
+    @store
   end
 
 end
@@ -112,3 +110,4 @@ end
 # 39.times {num1.insert(rand(1..100))}
 # num1.resize!
 # p num1
+# p num1.num_buckets
