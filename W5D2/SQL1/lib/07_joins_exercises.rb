@@ -140,7 +140,7 @@ def andrews_films_and_leads
                 WHERE
                   actors.name = 'Julie Andrews'
       ) AS selected_movies
-    JOIN
+      JOIN
       castings
     ON
       selected_movies.id = castings.movie_id
@@ -148,7 +148,6 @@ def andrews_films_and_leads
       actors
     ON
       castings.actor_id = actors.id
-    
     WHERE
       castings.ord = 1
   SQL
@@ -212,35 +211,35 @@ end
 def colleagues_of_garfunkel
   # List all the people who have played alongside 'Art Garfunkel'.
   execute(<<-SQL)
-    SELECT
-      DISTINCT actors.name
-    FROM
-        (
-          SELECT
-           DISTINCT movies.id AS id
-          FROM
-            movies
-          JOIN
-            castings
-          ON
-            castings.movie_id = movies.id
-          JOIN
-            actors
-          ON
-            castings.actor_id = actors.id 
-          WHERE
-          actors.name = 'Art Garfunkel'
-        ) AS selected_movies
-    JOIN
-      castings
-    ON
-      castings.movie_id = selected_movies.id
-    JOIN
-      actors
-    ON
-      castings.actor_id = actors.id
-    WHERE
-      actors.name != 'Art Garfunkel'
+  SELECT
+  DISTINCT actors.name
+FROM
+    (
+      SELECT
+       DISTINCT movies.id AS id
+      FROM
+        movies
+      JOIN
+        castings
+      ON
+        castings.movie_id = movies.id
+      JOIN
+        actors
+      ON
+        castings.actor_id = actors.id 
+      WHERE
+      actors.name = 'Art Garfunkel'
+    ) AS selected_movies
+JOIN
+  castings
+ON
+  castings.movie_id = selected_movies.id
+JOIN
+  actors
+ON
+  castings.actor_id = actors.id
+WHERE
+  actors.name != 'Art Garfunkel'
 
   SQL
 end
