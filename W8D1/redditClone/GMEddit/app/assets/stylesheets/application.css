@@ -1,0 +1,95 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ul{
+list-style-type: none;
+}
+ * {
+  background-color: black;
+  color: aliceblue;
+  font-family: 'New Rocker', cursive;
+  font-size: 30px;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  color:  aliceblue;
+  font-size: 70px;
+  
+}
+
+
+a, h2, h3 {
+  display: flex;
+  justify-content: center;
+  
+  font-size: 50px;
+  color: rgb(164, 195, 253);
+}
+.click {
+  display: flex;
+  justify-content: center;
+  color: aliceblue;
+  font-size: larger;
+}
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+ 
+ 
+}
+.EP {
+color: aliceblue;
+}
+
+#signin {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  color: turquoise;
+}
+#signup {
+  position: fixed;
+  top: 3em;
+  left: 1em;
+  color: turquoise;
+}
+
+#errors {
+  color: crimson;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  background-color: inherit;
+  
+  background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+  text-align: center;
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 120px;
+  animation: rainbow 8s ease infinite;
+}
+
+@keyframes rainbow { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 25%}
+    100%{background-position:0% 50%}
+}

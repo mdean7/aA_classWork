@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+
+    <title>GMEddit</title>
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+
+<div class="InOut">
+    <% if logged_in?%>
+    <form action="<%= session_url %>" method='POST'>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit">WE OUT!</button> 
+       <% else%>
+       <a id="signin" href="<%= new_session_url %>">
+      <button type="submit">Here we go again...</button> 
+      </a>
+        <a id="signup" href="<%= new_user_url %>">
+        <button type="submit">I can't wait to feel ways about stuff.</button> 
+      </a>
+    <% end%>
+    </form>
+  </div>
+  <body>
+    <h1 class="title"> ••• GMEddit ••• </h1>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+    
+
+    <%= yield %>
+    <p id='errors'><%= flash[:errors].join(', ') if flash[:errors] %></p>
+  </body>
+</html>

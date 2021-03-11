@@ -1,0 +1,6 @@
+<h1>All the People</h1>
+<ul>
+<% @users.all.each do |user|%>
+  <li> <a href="<%= user_url(user) %>"><%= user.email %></a> </li>
+<% end%>
+</ul>
