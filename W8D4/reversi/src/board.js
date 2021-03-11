@@ -22,7 +22,14 @@ function _makeGrid () {
  */
 function Board () {
   this.grid = _makeGrid();
+  this.grid[3][3] = new Piece('white')
+  this.grid[4][4] = new Piece('white')
+  this.grid[3][4] = new Piece('black')
+  this.grid[4][3] = new Piece('black')
 }
+
+// [3, 4], [4, 3] white
+// [3, 3], [4, 4] black
 
 Board.DIRS = [
   [ 0,  1], [ 1,  1], [ 1,  0],
@@ -34,6 +41,13 @@ Board.DIRS = [
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
+  let x = pos[0]
+  let y = pos[1]
+  if((x >= 0 && x <= 7) && (y >= 0 && y <= 7)){
+    return true
+  } else {
+    return false
+  }
 };
 
 /**
@@ -41,6 +55,13 @@ Board.prototype.isValidPos = function (pos) {
  * throwing an Error if the position is invalid.
  */
 Board.prototype.getPiece = function (pos) {
+  let x = pos[0]
+  let y = pos[1]
+  if(this.isValidPos(pos)){
+    return this.grid[x][y]
+  } else {
+    throw new Error('Not valid pos!')
+  }
 };
 
 /**
