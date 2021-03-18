@@ -1,0 +1,106 @@
+html, body, figure, ul, li, h1 {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  text-align: inherit;
+  color: inherit;
+  background: transparent;
+
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 60px;
+  margin: 30px;
+}
+
+ul {
+  display: flex;
+  width: 600px;
+  flex-wrap: wrap;
+  margin: 25px auto;
+  border: solid black 5px;
+  padding: 0px;
+}
+
+/* li:hover{
+  background-color: yellow;
+} */
+li:hover {
+  background-image: repeating-linear-gradient(45deg, indigo, blue, green, yellow, orange, red, violet, indigo, blue, green, yellow, orange, red, violet);
+  
+  background-size: 800% 800%; 
+  animation: rainbow 5s infinite;
+}
+
+@keyframes rainbow { 
+  0%{background-position:0% 100%}  
+  100%{background-position:100% 0%}
+}
+
+li {
+  padding: 5px;
+  height:200px;
+  width:30%;
+  background-color: grey;
+  border: solid black 5px;
+  cursor: pointer;
+}
+.selcted {
+  background-color: white;
+}
+.selected:hover {
+  background: white;
+}
+
+.x, .o {
+  background: white;
+  cursor: default;
+}
+
+.x:hover, .o:hover {
+  background: white;
+}
+
+.x:after{
+  content:'x';
+  display: block;
+  font-size: 70px;
+}
+
+
+.o:after{
+  content:'o';
+  display: block;
+  font-size: 70px;
+}
+
+.game-over {
+  color: red;
+  cursor: default;
+  background: white;
+}
+
+.winner-x .x, .winner-o .o {
+  background: green;
+  color: white;
+}
+
+figcaption {
+  font-size: 30px;
+  color: yellowgreen;
+  margin: 0 auto;
+}
