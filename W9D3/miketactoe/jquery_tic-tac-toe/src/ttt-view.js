@@ -3,15 +3,12 @@ class View {
     this.game = game;
     this.$el = $el;
     this.setupBoard();
-  this.bindEvents();
+    this.bindEvents();
   }
 
   bindEvents() {
     this.$el.on("click", "li", ( event => {
       const $cell = $(event.target);
-      const pos = $cell.data("pos");
-      
-      $cell.addClass('selected')
       this.makeMove($cell);
     }));
 
@@ -37,16 +34,16 @@ class View {
     }
       const winner = this.game.winner();
       const $figcaption = $("<figcaption>");
-
+      
       if (winner) {
         this.$el.addClass(`winner-${winner}`);
         $figcaption.html(`You win, ${winner}!`);
-      } else {
-        $figcaption.html("It's a draw!");
-      }
+      } 
+      
+  
 
       this.$el.append($figcaption);
-    // }
+    
   }
 
   setupBoard() {

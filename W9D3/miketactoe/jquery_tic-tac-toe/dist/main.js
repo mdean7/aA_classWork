@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\")\nconst Game = __webpack_require__(/*! ../../tic-tac-toe_node-solution/game.js */ \"../tic-tac-toe_node-solution/game.js\")\n\n\n  $(() => {\n    console.log(\"Game is working\")\n    const newGame = new Game();\n    const el = $(\".ttt\");\n    new View(newGame, el);\n  });\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\")\nconst Game = __webpack_require__(/*! ../../tic-tac-toe_node-solution/game.js */ \"../tic-tac-toe_node-solution/game.js\")\n\n\nwindow.View = View;\nwindow.Game = Game;\n\n\n\n  $(() => {\n    console.log(\"Game is working\")\n    const newGame = new Game();\n    const el = $(\".ttt\");\n    new View(newGame, el); \n    window.getElementById(\"audio\").play();\n   \n   \n  });\n\n  window.addEventListener(\"DOMContentLoaded\", event => {\n    const audio = document.querySelector(\"audio\");\n    audio.volume = 0.2;\n    audio.play();\n  });\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("const View = __webpack_require__(/*! ./ttt-view.js */ \"./src/ttt-view.js\
   \*************************/
 /***/ ((module) => {
 
-eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el;\n\n  // bindEvents() {}\n\n  // makeMove($square) {}\n\n  this.setupBoard()\n  }\n\n\n\n  setupBoard() {\n    let $ul = $(\"<ul>\");\n    for (let i = 0; i < 9; i++) {\n      let $li = $(\"<li>\");\n      $ul.append($li);\n    };\n    this.$el.append($ul);\n}\n\n\n}\n\nmodule.exports = View;\n\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$el = $el;\n    this.setupBoard();\n    this.bindEvents();\n  }\n\n  bindEvents() {\n    this.$el.on(\"click\", \"li\", ( event => {\n      const $cell = $(event.target);\n      this.makeMove($cell);\n    }));\n\n  }\n\n  makeMove($cell) {\n    const currentPlayer = this.game.currentPlayer;\n    const pos = $cell.data(\"pos\");\n\n    $cell.addClass(currentPlayer);\n\n    try {\n      this.game.playMove(pos);\n    } catch (e) {\n      alert(\"This \" + e.msg.toLowerCase());\n      return;\n    }\n\n\n    if (this.game.isOver()) {\n      this.$el.addClass(\"game-over\");\n      this.$el.off(\"click\");\n    }\n      const winner = this.game.winner();\n      const $figcaption = $(\"<figcaption>\");\n      \n      if (winner) {\n        this.$el.addClass(`winner-${winner}`);\n        $figcaption.html(`You win, ${winner}!`);\n      } \n      \n  \n\n      this.$el.append($figcaption);\n    \n  }\n\n  setupBoard() {\n    let $ul = $(\"<ul>\");\n    for (let rowIdx = 0; rowIdx < 3; rowIdx++) {\n      for (let colIdx = 0; colIdx < 3; colIdx++) {\n        let $li = $(\"<li></li>\");\n        $li.data(\"pos\", [rowIdx, colIdx]);\n        $ul.append($li);\n    };\n    this.$el.append($ul);\n  }\n}\n}\n\nmodule.exports = View;\n\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ }),
 
