@@ -109,12 +109,7 @@ var todosReducer = function todosReducer() {
       return nextState;
 
     case _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_TODO:
-      for (var key in nextState) {
-        if (key === action.todo.id) {
-          delete nextState.key;
-        }
-      }
-
+      delete nextState[action.todo.id];
       return nextState;
 
     default:
