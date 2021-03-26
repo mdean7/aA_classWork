@@ -1,7 +1,9 @@
 import React from "react"; 
 import ReactDOM from 'react-dom';
 import {configureStore} from "./frontend/store/store";
-import {receiveTodo, receiveTodos, removeTodo} from "./frontend/actions/todo_actions"
+// import {receiveTodo, receiveTodos, removeTodo} from "./frontend/actions/todo_actions"
+import * as todoActions from "./frontend/actions/todo_actions"
+import * as stepActions from "./frontend/actions/steps_actions"
 
 document.addEventListener("DOMContentLoaded", function(){
   const content = document.getElementById("content");
@@ -10,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 const store = configureStore();
 window.store = store;
-window.receiveTodo = receiveTodo;
-window.receiveTodos = receiveTodos;
-window.removeTodo = removeTodo;
+window.todoActions = todoActions;
+window.stepActions = stepActions
+// window.receiveTodos = receiveTodos;
+// window.removeTodo = removeTodo;

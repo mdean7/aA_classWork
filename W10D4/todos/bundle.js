@@ -2,6 +2,45 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./frontend/actions/steps_actions.js":
+/*!*******************************************!*\
+  !*** ./frontend/actions/steps_actions.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_STEPS": () => (/* binding */ RECEIVE_STEPS),
+/* harmony export */   "RECEIVE_STEP": () => (/* binding */ RECEIVE_STEP),
+/* harmony export */   "REMOVE_STEP": () => (/* binding */ REMOVE_STEP),
+/* harmony export */   "receiveSteps": () => (/* binding */ receiveSteps),
+/* harmony export */   "receiveStep": () => (/* binding */ receiveStep),
+/* harmony export */   "removeStep": () => (/* binding */ removeStep)
+/* harmony export */ });
+var RECEIVE_STEPS = "RECEIVE_STEPS";
+var RECEIVE_STEP = "RECEIVE_STEP";
+var REMOVE_STEP = "REMOVE_STEP";
+var receiveSteps = function receiveSteps(steps) {
+  return {
+    type: RECEIVE_STEPS,
+    steps: steps
+  };
+};
+var receiveStep = function receiveStep(step) {
+  return {
+    type: RECEIVE_STEP,
+    step: step
+  };
+};
+var removeStep = function removeStep(step) {
+  return {
+    type: REMOVE_STEP,
+    step: step
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/todo_actions.js":
 /*!******************************************!*\
   !*** ./frontend/actions/todo_actions.js ***!
@@ -51,13 +90,72 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "rootReducer": () => (/* binding */ rootReducer)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _todos_reducers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./todos_reducers */ "./frontend/reducers/todos_reducers.js");
+/* harmony import */ var _steps_reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./steps_reducers */ "./frontend/reducers/steps_reducers.js");
 
 
-var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  todos: _todos_reducers__WEBPACK_IMPORTED_MODULE_0__.default
+
+var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+  todos: _todos_reducers__WEBPACK_IMPORTED_MODULE_0__.default,
+  steps: _steps_reducers__WEBPACK_IMPORTED_MODULE_1__.default
 });
+
+/***/ }),
+
+/***/ "./frontend/reducers/steps_reducers.js":
+/*!*********************************************!*\
+  !*** ./frontend/reducers/steps_reducers.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_steps_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/steps_actions */ "./frontend/actions/steps_actions.js");
+
+var initialState = {
+  steps: {
+    1: {
+      id: 1,
+      title: "get tools",
+      done: false,
+      todo_id: 1
+    }
+  }
+};
+
+var stepsReducer = function stepsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var nextState = Object.assign({}, state);
+
+  switch (action.type) {
+    case _actions_steps_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_STEPS:
+      var obj = {};
+
+      for (var i = 0; i < action.steps.length; i++) {
+        obj[action.steps[i].id] = action.steps[i];
+      }
+
+      return obj;
+
+    case _actions_steps_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_STEP:
+      nextState[action.step.id] = action.step;
+      return nextState;
+
+    case _actions_steps_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_STEP:
+      delete nextState[action.step.id];
+      return nextState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (stepsReducer);
 
 /***/ }),
 
@@ -74,17 +172,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/todo_actions */ "./frontend/actions/todo_actions.js");
 
 var initialState = {
-  1: {
-    id: 1,
-    title: "fix hulkbuster",
-    body: "hulkbuster is broken",
-    done: false
-  },
-  2: {
-    id: 2,
-    title: "make fun of Thor's hair",
-    body: "Use sick Point Break jokes",
-    done: true
+  todos: {
+    1: {
+      id: 1,
+      title: "fix hulkbuster",
+      body: "hulkbuster is broken",
+      done: false
+    },
+    2: {
+      id: 2,
+      title: "make fun of Thor's hair",
+      body: "Use sick Point Break jokes",
+      done: true
+    }
   }
 };
 
@@ -30797,7 +30897,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _frontend_store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./frontend/store/store */ "./frontend/store/store.js");
 /* harmony import */ var _frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./frontend/actions/todo_actions */ "./frontend/actions/todo_actions.js");
+/* harmony import */ var _frontend_actions_steps_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./frontend/actions/steps_actions */ "./frontend/actions/steps_actions.js");
 
+
+ // import {receiveTodo, receiveTodos, removeTodo} from "./frontend/actions/todo_actions"
 
 
 
@@ -30807,9 +30910,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 var store = (0,_frontend_store_store__WEBPACK_IMPORTED_MODULE_2__.configureStore)();
 window.store = store;
-window.receiveTodo = _frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__.receiveTodo;
-window.receiveTodos = _frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__.receiveTodos;
-window.removeTodo = _frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__.removeTodo;
+window.todoActions = _frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__;
+window.stepActions = _frontend_actions_steps_actions__WEBPACK_IMPORTED_MODULE_4__; // window.receiveTodos = receiveTodos;
+// window.removeTodo = removeTodo;
 })();
 
 /******/ })()
