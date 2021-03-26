@@ -12,11 +12,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RECEIVE_TODOS": () => (/* binding */ RECEIVE_TODOS),
 /* harmony export */   "RECEIVE_TODO": () => (/* binding */ RECEIVE_TODO),
+/* harmony export */   "REMOVE_TODO": () => (/* binding */ REMOVE_TODO),
 /* harmony export */   "receiveTodos": () => (/* binding */ receiveTodos),
-/* harmony export */   "receiveTodo": () => (/* binding */ receiveTodo)
+/* harmony export */   "receiveTodo": () => (/* binding */ receiveTodo),
+/* harmony export */   "removeTodo": () => (/* binding */ removeTodo)
 /* harmony export */ });
 var RECEIVE_TODOS = "RECEIVE_TODOS";
 var RECEIVE_TODO = "RECEIVE_TODO";
+var REMOVE_TODO = "REMOVE_TODO";
 var receiveTodos = function receiveTodos(todos) {
   return {
     type: RECEIVE_TODOS,
@@ -26,6 +29,12 @@ var receiveTodos = function receiveTodos(todos) {
 var receiveTodo = function receiveTodo(todo) {
   return {
     type: RECEIVE_TODO,
+    todo: todo
+  };
+};
+var removeTodo = function removeTodo(todo) {
+  return {
+    type: REMOVE_TODO,
     todo: todo
   };
 };
@@ -83,17 +92,29 @@ var todosReducer = function todosReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
-  var nextState = Object.assign({}, state); // debugger
+  var nextState = Object.assign({}, state);
 
   switch (action.type) {
     case _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TODOS:
-      nextState[action.todos.forEach(function (todo) {
-        return todo.id;
-      })] = action.todo;
-      return nextState;
+      var obj = {};
+
+      for (var i = 0; i < action.todos.length; i++) {
+        obj[action.todos[i].id] = action.todos[i];
+      }
+
+      return obj;
 
     case _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_TODO:
       nextState[action.todo.id] = action.todo;
+      return nextState;
+
+    case _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_TODO:
+      for (var key in nextState) {
+        if (key === action.todo.id) {
+          delete nextState.key;
+        }
+      }
+
       return nextState;
 
     default:
@@ -30793,6 +30814,7 @@ var store = (0,_frontend_store_store__WEBPACK_IMPORTED_MODULE_2__.configureStore
 window.store = store;
 window.receiveTodo = _frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__.receiveTodo;
 window.receiveTodos = _frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__.receiveTodos;
+window.removeTodo = _frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__.removeTodo;
 })();
 
 /******/ })()
