@@ -5,19 +5,17 @@ import {
 } from "../actions/todo_actions";
 
 const initialState = {
-  todos: {
-    1: {
-      id: 1,
-      title: "fix hulkbuster",
-      body: "hulkbuster is broken",
-      done: false,
-    },
-    2: {
-      id: 2,
-      title: "make fun of Thor's hair",
-      body: "Use sick Point Break jokes",
-      done: true,
-    },
+  1: {
+    id: 1,
+    title: "fix hulkbuster",
+    body: "hulkbuster is broken",
+    done: false,
+  },
+  2: {
+    id: 2,
+    title: "make fun of Thor's hair",
+    body: "Use sick Point Break jokes",
+    done: true,
   },
 };
 

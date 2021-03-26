@@ -5,13 +5,11 @@ import {
 } from "../actions/steps_actions";
 
 const initialState = {
-  steps: {
-    1: {
-      id: 1,
-      title: "get tools",
-      done: false,
-      todo_id: 1
-    }
+  1: {
+    id: 1,
+    title: "get tools",
+    done: false,
+    todo_id: 1,
   },
 };
 
