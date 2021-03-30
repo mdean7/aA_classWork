@@ -33986,17 +33986,17 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
 "use strict";
-/*!************************!*\
-  !*** ./todo_redux.jsx ***!
-  \************************/
+/*!*********************************!*\
+  !*** ./frontend/todo_redux.jsx ***!
+  \*********************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _frontend_store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./frontend/store/store */ "./frontend/store/store.js");
-/* harmony import */ var _frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./frontend/actions/todo_actions */ "./frontend/actions/todo_actions.js");
-/* harmony import */ var _frontend_actions_steps_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./frontend/actions/steps_actions */ "./frontend/actions/steps_actions.js");
-/* harmony import */ var _root__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./root */ "./root.js");
-/* harmony import */ var _frontend_reducers_selectors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./frontend/reducers/selectors */ "./frontend/reducers/selectors.js");
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
+/* harmony import */ var _actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./actions/todo_actions */ "./frontend/actions/todo_actions.js");
+/* harmony import */ var _actions_steps_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/steps_actions */ "./frontend/actions/steps_actions.js");
+/* harmony import */ var _root__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../root */ "./root.js");
+/* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./reducers/selectors */ "./frontend/reducers/selectors.js");
 
 
  // import {receiveTodo, receiveTodos, removeTodo} from "./frontend/actions/todo_actions"
@@ -34005,17 +34005,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var store = (0,_frontend_store_store__WEBPACK_IMPORTED_MODULE_2__.configureStore)();
+var store = (0,_store_store__WEBPACK_IMPORTED_MODULE_2__.configureStore)();
 document.addEventListener("DOMContentLoaded", function () {
   var content = document.getElementById("content");
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_root__WEBPACK_IMPORTED_MODULE_5__.Root, {
     store: store
   }), content);
 });
-window.allTodos = _frontend_reducers_selectors__WEBPACK_IMPORTED_MODULE_6__.allTodos;
+window.allTodos = _reducers_selectors__WEBPACK_IMPORTED_MODULE_6__.allTodos;
 window.store = store;
-window.todoActions = _frontend_actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__;
-window.stepActions = _frontend_actions_steps_actions__WEBPACK_IMPORTED_MODULE_4__; // window.receiveTodos = receiveTodos;
+window.todoActions = _actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__;
+window.stepActions = _actions_steps_actions__WEBPACK_IMPORTED_MODULE_4__; // window.receiveTodos = receiveTodos;
 // window.removeTodo = removeTodo;
 })();
 
