@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { configureStore } from "./frontend/store/store";
+import { configureStore } from "./store/store";
 // import {receiveTodo, receiveTodos, removeTodo} from "./frontend/actions/todo_actions"
-import * as todoActions from "./frontend/actions/todo_actions";
-import * as stepActions from "./frontend/actions/steps_actions";
-import { Root } from "./root";
-import { allTodos } from "./frontend/reducers/selectors";
+import * as todoActions from "./actions/todo_actions";
+import * as stepActions from "./actions/steps_actions";
+import { Root } from "../root";
+import { allTodos } from "./reducers/selectors";
 
 const store = configureStore();
 
